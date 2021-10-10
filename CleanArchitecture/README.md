@@ -95,22 +95,79 @@ categories.
 # <a name="part_2">PART II - Starting with the Bricks: Programming Paradigms Paradigm Overview </a>
 ## <a name="chapter_3">Chapter 3 – Paradigm Overview </a>
 -	Structured Programming
-        *	1st paradigm to be adopted (not the 1st invented) was structured programming, discovered by Edsger Wybe Dijkstra in 1968.
-        *	Structured Programming imposes discipline on direct transfer of control.
+     *	1st paradigm to be adopted (not the 1st invented) was structured programming, discovered by Edsger Wybe Dijkstra in 1968.
+     *	Structured Programming imposes discipline on direct transfer of control.
 -	Object Oriented Programming
-        *	Discovered in 1966, by Ole Johan Dahl and Kristen Nygaard.
-        *	Object oriented programming imposes discipline on indirect transfer of control.
+     *	Discovered in 1966, by Ole Johan Dahl and Kristen Nygaard.
+     *	Object oriented programming imposes discipline on indirect transfer of control.
 -	Functional Programming
-        *	First to be invented among the three, it is a direct work of Alonzo Church, invented Lambda calculus in 1936, it is foundation for LISP language.
-        *	Foundational notion of Lambda calculus is Immutability – that is, the notion that the values of symbols do not change. Functional language has no assignment statement.
-        *	Functional Programming imposes discipline upon assignment.
+     *	First to be invented among the three, it is a direct work of Alonzo Church, invented Lambda calculus in 1936, it is foundation for LISP language.
+     *	Foundational notion of Lambda calculus is Immutability – that is, the notion that the values of symbols do not change. Functional language has no assignment statement.
+     *	Functional Programming imposes discipline upon assignment.
 -	Food for thought
-        *	Each of the paradigm removes capabilities from the programmer.
-        *	The three paradigms together removes the goto statements, function pointers and assignment.
+     *	Each of the paradigm removes capabilities from the programmer.
+     *	The three paradigms together removes the goto statements, function pointers and assignment.
 
 ## <a name="chapter_4">Chapter 4 – Structural Programming </a>
+- Proof
+    * Dijkstra proved that all programs can be constructed from just three structures: 1) *sequence* 2) *selection* 3) *iteration*.
+    * The very control structures that made a module provable were the same minimum set of control structures from which all programs can be built. Thus structured programming was born.
+    * How Dijkstra tackled the proofs for 3 structures?
+        * Sequential statements - can be proved by simple enumeration by mathematically tracing the input of the sequence to the output of the sequence.
+        * Selection statements - Reapplication of enumeration, Dijkstra enumerated each path of the selection.
+        * Iteration - Dijkstra used induction here. He proved case for 1 by enumeration, then he proved case for N+1 by assuming that the case for N is correct. He also proved the starting and ending criteria of the iteration by enumeration.
+- Functional Decomposition
+    * Structural Programming allows modules to be recursively decomposed into provable units, which in turn means that the modules can be functionally decomposed.
+    * Each decomposed function can be represented using the restricted control structures of the structured programming.
+- Proofs
+    - No programmer tried to prove functional decomposition through laborious mathematical process, instead all relied on scientific method.
+    - Mathematics is the discipline of proving provable statements true. Science, in contrast, is the discipline of proving provable statements false.
+- Tests
+    - Digkstra: "Testing shows the presence (not the absence) of bugs."
+    - A program can be proven incorrect by tests, but cannot be proven correct through the tests.
+    - A program that is not provable, cannot be deemed correct no matter how many tests are applied to it.
+    - After decomposing the program into smaller provable functions, we can use tests to try to prove those small provable functions incorrect.
+        - If such tests fail to prove incorrectness, then we deem the functions to be correct enough for our purpose.
+- Conclusion
+    - It is this ability to create falsifiable units of programming that makes structured programming valuable today.
+    - This notion of functional decomposition is of very importance when defining the software architecture.
+    - At every level, software architects strive to define the modules, components, services that are easily falsifiable (testable).
+    - To do so, they employ restrictive disciplines similar to structured programming albeit at much higher level.
+ 
+         
 
 ## <a name="chapter_5">Chapter 5 - Object-Oriented Programming </a> 
+- The basis of a good architecture is the understanding and application of the principles of object oriented design.
+- OO is the proper admixture of *encapsulation*, *inheritance*, and *polymorphism*.
+- Encapsulation
+    - OO languages provide easy and effective encapsulation of the data and function.
+    - C language provides high level of encapsulation by dividing the data members and functional methods between *.h* and *.c* files.
+    - Modern languages sort of broke that notion of perfect encapsulation
+- Inheritance
+    - It is simply redeclaration of a group variables and functions within an enclosing scope.
+    - This was easily but manually achievable in C language.
+    - OO languages made it more formal about inheritance.
+- Polymorphism
+    - Polymorphism is the application of pointers to the functions.
+    - Programmers have been using the pointers to functions to achieve polymorphic behavior.
+    - However, such pointers to functions behavior is quite dangerous as it just hits at having a good intent but not a strong mechanism to ensure the correctness.
+    - OO languages have made it much safer and easier to use the polymorphism.
+    - The power of polymorphism
+        - Before OO languages, the polymorphism helped in achieving the device independence via plugin architecture.
+            - i.e. device drivers (which implements conventional contract) can be plugged into the main source code, and the source code would work with the device seamlessly.
+        - OO allows the plugin architecture to be used anywhere, for anything.
+    - Dependency Inversion
+        - In typical top-down approach of functional decomposition, every caller is forced to mention the name of the module that contained the callee.
+        - However, due to polymorphism, these dependencies can be inverted very easily.
+            - for example, a high level module could be pointing to the interface and another module could be implementing that interface. Thus, the module depends on the interface and it inverts the dependency relation.
+        - With OO, any source code dependency, no matter where it is, can be inverted.
+        - With this approach, the software architects gets the absolute control over the direction of all source code dependencies in the system.
+        - This essentially gives the power to the software architects to make the dependency point in any desired direction.
+        - With such a power provided by OO languages, the components can be developed and deployed independently.
+    - Conclusion
+        - For software architects, the OO is the ability (through polymorphism) to gain absolute control over every source code dependency in the system.
+        - Polymorphism allows the software architects to create a plugin architecture, in which the modules that contains the high level policies are independent of the lower level modules.
+            
 
 ## <a name="chapter_6">Chapter 6 - Functional Programming </a> 
 
