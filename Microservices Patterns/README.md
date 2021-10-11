@@ -27,7 +27,7 @@ This file summarizes my notes from the Clean Architecture book.
         3. Here, the services communicate via API
     2. Scaling cube and Microservices
 
-       ![scale_cube](/images/1_1_ScaleCube.png)
+       ![scale_cube](./images/1_1_ScaleCube.png)
 
         1. X-Axis (a.k.a. horizontal duplication) - Scale by cloning
             1. here, you run clones of the application behind load balancer.
