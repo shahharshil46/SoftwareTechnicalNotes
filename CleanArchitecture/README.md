@@ -13,8 +13,8 @@ This file summarizes my notes from the Clean Architecture book.
    3. [Chapter 5 - Object-Oriented Programming](#chapter_5) 
    4. [Chapter 6 - Functional Programming](#chapter_6) 
 
-3. PART III - Design Principles
-   1. Chapter 7 - SRP: The Single Responsibility Principle
+3. [PART III - Design Principles](#part_3)
+   1. [Chapter 7 - SRP: The Single Responsibility Principle](#chapter_7)
    1. Chapter 8 - OCP: The Open-Closed Principle
    1. Chapter 9 - LSP: The Liskov Substitution Principle
    1. Chapter 10 - ISP: The Interface Segregation Principle
@@ -170,4 +170,46 @@ categories.
             
 
 ## <a name="chapter_6">Chapter 6 - Functional Programming </a> 
+- An important aspect of the functional programming languages
+    - Variables in functional programming languages do not vary.
+- Immutability and Architecture
+    - All race conditions, deadlock conditions, and concurrent update problems are due to mutable variables.
+    - As an architect, we should look out for robustness in the system that has multiple threads and processors.
+    - Immutability can be achieved through compromises.
+- Segregation of Mutability
+    - Segregate the application in immutable and mutable components.
+    - Architects must then push for as much work as possible in the immutable components of the application.
+- Event Sourcing
+    - It is a strategy wherein we store the transactions instead of the state.
+    - When the state is required, we simply apply all the transactions from the beginning of the time.
+- Given we have enough storage and processing power, we can make our applications entirely functional.
+- Functional programming is a discipline imposed upon variable assignment.
+- Software is composed of sequence, selection, iteration and indirection.
+
+# <a name="part_3">PART III - Design Principles </a>
+- SRP - Single responsibility Principle
+    - Software modules has one, and only one reason to change.
+- OCP - Open-Closed Principle
+    - Software systems must be designed to allow the behavior of the system to be changed by adding new code, rather than changing the existing code.
+- LSP - Liskov Substitution Principle
+    - To build software systems from interchangeable parts, those parts must adhere to a contract that allows those parts to be substituted for another.
+- ISP - Interface Segregation Principle
+    - Software designers should avoid depending on things that they don't use.
+- DIP - Dependency Inversion Principle
+    - The code that implements high level policy should not depend on the code that implements low-level details. Rather, details should depend on those policies. 
+
+## <a name="chapter_7">Chapter 7 - The Single Responsibility Principle</a>
+- A module should be responsible to one , and only one, actor.
+- Module - simplest definition could be a source file or it is a cohesive set of functions and data structures.
+- Cohesion binds together the code responsible to a single actor.
+- Symptom 1 - Accidental duplication
+    - Many problems occur because we put code that different actors depend on into close proximity.
+    - The SRP says to separate the code that different actors depend on.
+- Sympton 2 - Merges
+    - Problems occur when different developers from different teams try to change the same source code they depend on.
+    - This is easily reflected by the code merges and they get riskier if multiple actors depends on same files.
+- At component level, the SRP becomes the Common Closure Principle.
+- At architectural level, the SRP becomes the Axis of change responsible for the creation of Architectural boundaries.
+  
+  
 
