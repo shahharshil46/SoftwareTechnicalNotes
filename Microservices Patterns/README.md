@@ -70,3 +70,54 @@ This file summarizes my notes from the Clean Architecture book.
     
          
 ## <a name="chapter_2">Chapter 2 - Decomposition strategies</a>
+1. What is Microservice architecture?
+   1. What is Service Architecture and why does it matter?
+      1. A software architecture is a decomposition into parts (the elements) and the relationship between those parts.
+      2. 4+1 view of the architecture
+
+         | View | Created By | Elements | Relations |
+         | :----- | :------ | :------ | :------ |
+         | Logical | Developers | Classes and Packages | Relations between them |
+         | Implementation | Introduced by build system | Executable modules | Dependencies |
+         | Process | Running components | Processes | IPC |
+         | Deployment | Processes running on machines | machines and processes | Networking |
+         1. Scenarios => They animate the views, each scenario describes as how various components in any particular view collaborate in order to handle a request.
+      3. Requirements - Choice of architecture affects both types of requirements.
+         1. Functional - what an application must do, user stories and use cases.
+         2. QoS requirements - quality attributes of the service, availability, scalability, reliability, maintainability, testability, deployability etc.
+   2. Architecture styles
+      1. Layered architecture - A layer can only depend on the layer(s) below it. eg. OSI layer etc.
+      2. Hexagonal architecture
+         1. Puts business logic in the center, surrounded by Ports and adapters.
+         2. Ports
+            1. Inbound ports => API as exposed by the service
+               1. Example: Service interface
+            2. Outbound ports => how the service invokes other external systems.
+               1. Example: Repository interface
+         3. Adapters
+            1. Inbound - handles an inbound request by invoking an inbound port
+               1. example: REST endpoints 
+            2. Outbound - handles requests from business logic by invoking an external application/service.
+               1. example: DAO
+   3. Microservice architecture is an architectural style.
+      1. It structures the application as a collection of loosely coupled, independently deployable services.
+2. Defining an applications Microservice architecture
+   1. It's a three-step process
+      1. Identify Operations
+         1. System Operation - abstraction of a request that the application must handle. Either a command to update the data or a query to retrieve the data.
+      2. Identify Services - there are multiple strategies
+         1. Define a service around business capabilities.
+         2. Organize service around domain-driven design subdomains.
+      3. Define Service APIs and collaborations
+         1. if service is implementing the whole operation by itself or requires to collaborate with other service.
+   2. Obstacles
+      1. Network latencies
+      2. Synchronous communication vs Availability balance
+      3. Data consistency across the services
+      4. God classes
+   3. Identifying Operations
+      1. From the user stories, a domain model is created with which the operations are described.
+      2. Behavior od the system operation is described in terms of its effect on one or more domain objects and the relationships between them.
+   4. Defining Services [WIP]
+      1. Decompose by business capability
+      2. Decompose by subdomain
